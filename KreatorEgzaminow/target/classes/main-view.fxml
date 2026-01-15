@@ -28,30 +28,34 @@
         <Label style="-fx-font-weight: bold; -fx-font-size: 22px; -fx-text-fill: #2c3e50;" text="DODAJ NOWE PYTANIE" />
 
         <HBox spacing="20.0">
-            <VBox alignment="CENTER" spacing="10.0" HBox.hgrow="ALWAYS">
-                <Label alignment="CENTER" maxWidth="Infinity" prefHeight="70.0" style="-fx-border-color: #dcdde1; -fx-border-width: 1; -fx-background-color: #f9f9f9; -fx-font-weight: bold;" text="PYTANIE&#10;JEDNOKROTNE" textAlignment="CENTER" />
-                <RadioButton mnemonicParsing="false" selected="true">
-                    <toggleGroup><ToggleGroup fx:id="typPytania" /></toggleGroup>
-                </RadioButton>
-            </VBox>
-            <VBox alignment="CENTER" spacing="10.0" HBox.hgrow="ALWAYS">
-                <Label alignment="CENTER" maxWidth="Infinity" prefHeight="70.0" style="-fx-border-color: #dcdde1; -fx-border-width: 1; -fx-background-color: #f9f9f9; -fx-font-weight: bold;" text="PYTANIE&#10;WIELOKROTNE" textAlignment="CENTER" />
-                <RadioButton mnemonicParsing="false" toggleGroup="$typPytania" />
-            </VBox>
+            <Button fx:id="przyciskTrybJedno" maxWidth="Infinity" onAction="#ustawTrybJedno" prefHeight="70.0" style="-fx-font-weight: bold; -fx-cursor: hand;" text="PYTANIE&#10;JEDNOKROTNE" textAlignment="CENTER" HBox.hgrow="ALWAYS" />
+            <Button fx:id="przyciskTrybWiele" maxWidth="Infinity" onAction="#ustawTrybWiele" prefHeight="70.0" style="-fx-font-weight: bold; -fx-cursor: hand;" text="PYTANIE&#10;WIELOKROTNE" textAlignment="CENTER" HBox.hgrow="ALWAYS" />
         </HBox>
 
-        <TextField prefHeight="50.0" promptText="TREŚĆ PYTANIA..." style="-fx-font-size: 15px;" />
+        <TextField fx:id="poleTrescPytania" prefHeight="50.0" promptText="TREŚĆ PYTANIA..." style="-fx-font-size: 15px;" />
 
         <VBox spacing="10.0">
-            <Label style="-fx-font-weight: bold; -fx-text-fill: #95a5a6;" text="ODPOWIEDZI:" />
-            <HBox alignment="CENTER_LEFT" spacing="15.0"><TextField promptText="ODPOWIEDŹ 1" HBox.hgrow="ALWAYS" prefHeight="38.0" /><CheckBox scaleX="1.4" scaleY="1.4" /></HBox>
-            <HBox alignment="CENTER_LEFT" spacing="15.0"><TextField promptText="ODPOWIEDŹ 2" HBox.hgrow="ALWAYS" prefHeight="38.0" /><CheckBox scaleX="1.4" scaleY="1.4" /></HBox>
-            <HBox alignment="CENTER_LEFT" spacing="15.0"><TextField promptText="ODPOWIEDŹ 3" HBox.hgrow="ALWAYS" prefHeight="38.0" /><CheckBox scaleX="1.4" scaleY="1.4" /></HBox>
-            <HBox alignment="CENTER_LEFT" spacing="15.0"><TextField promptText="ODPOWIEDŹ 4" HBox.hgrow="ALWAYS" prefHeight="38.0" /><CheckBox scaleX="1.4" scaleY="1.4" /></HBox>
+            <Label style="-fx-font-weight: bold; -fx-text-fill: #95a5a6;" text="ODPOWIEDZI (Zaznacz poprawne):" />
+            <HBox alignment="CENTER_LEFT" spacing="15.0">
+                <TextField fx:id="poleOdp1" prefHeight="38.0" promptText="ODPOWIEDŹ 1" HBox.hgrow="ALWAYS" />
+                <CheckBox fx:id="wybor1" onAction="#obsluzKlikniecieWyboru" scaleX="1.4" scaleY="1.4" />
+            </HBox>
+            <HBox alignment="CENTER_LEFT" spacing="15.0">
+                <TextField fx:id="poleOdp2" prefHeight="38.0" promptText="ODPOWIEDŹ 2" HBox.hgrow="ALWAYS" />
+                <CheckBox fx:id="wybor2" onAction="#obsluzKlikniecieWyboru" scaleX="1.4" scaleY="1.4" />
+            </HBox>
+            <HBox alignment="CENTER_LEFT" spacing="15.0">
+                <TextField fx:id="poleOdp3" prefHeight="38.0" promptText="ODPOWIEDŹ 3" HBox.hgrow="ALWAYS" />
+                <CheckBox fx:id="wybor3" onAction="#obsluzKlikniecieWyboru" scaleX="1.4" scaleY="1.4" />
+            </HBox>
+            <HBox alignment="CENTER_LEFT" spacing="15.0">
+                <TextField fx:id="poleOdp4" prefHeight="38.0" promptText="ODPOWIEDŹ 4" HBox.hgrow="ALWAYS" />
+                <CheckBox fx:id="wybor4" onAction="#obsluzKlikniecieWyboru" scaleX="1.4" scaleY="1.4" />
+            </HBox>
         </VBox>
 
         <Region VBox.vgrow="ALWAYS" />
-        <Button maxWidth="Infinity" prefHeight="60.0" style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 16px; -fx-background-radius: 10;" text="DODAJ DO BAZY" />
+        <Button maxWidth="Infinity" onAction="#dodajPytanieDoBazy" prefHeight="60.0" style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 16px; -fx-background-radius: 10; -fx-cursor: hand;" text="DODAJ DO BAZY" />
     </VBox>
 
     <VBox alignment="TOP_CENTER" spacing="20.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 15, 0, 0, 0);" GridPane.columnIndex="1">
@@ -64,7 +68,7 @@
 
         <Label style="-fx-text-fill: #e74c3c; -fx-font-weight: bold; -fx-font-size: 20px;" text="BAZA PYTAŃ" />
 
-        <ListView VBox.vgrow="ALWAYS" style="-fx-background-color: transparent; -fx-border-color: #f0f2f5; -fx-border-radius: 5;" />
+        <ListView fx:id="widokListyPytan" style="-fx-background-color: transparent; -fx-border-color: #f0f2f5; -fx-border-radius: 5;" VBox.vgrow="ALWAYS" />
 
         <Separator />
 
