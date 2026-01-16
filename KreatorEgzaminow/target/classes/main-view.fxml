@@ -72,6 +72,6 @@
 
         <Separator />
 
-        <Button maxWidth="Infinity" prefHeight="65.0" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 18px; -fx-background-radius: 10; -fx-cursor: hand;" text="ROZPOCZNIJ TEST (Losuj 10)" />
+        <Button onAction="#generujEgzamin" maxWidth="Infinity" prefHeight="65.0" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 18px; -fx-background-radius: 10; -fx-cursor: hand;" text="ROZPOCZNIJ TEST (Losuj 10)" />
     </VBox>
 </GridPane>
