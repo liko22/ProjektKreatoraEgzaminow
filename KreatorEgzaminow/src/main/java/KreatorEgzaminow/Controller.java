@@ -183,6 +183,7 @@ public class Controller {
     //Tworzenie egzaminu
     @FXML
     private void generujEgzamin() {
+        if (bazaPytan.getListaWszystkichPytan().size()<10) {return;}
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/egzamin-view.fxml"));
