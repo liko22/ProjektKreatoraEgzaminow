@@ -24,8 +24,8 @@ public class EgzaminController {
         kontenerPytan.getChildren().clear();
         konteneryOdpowiedzi.clear();
 
-        for (int i = 0; i < egzamin.getListaPytanEgzaminacyjnych().size(); i++) {
-            Pytanie p = egzamin.getListaPytanEgzaminacyjnych().get(i);
+        for (int i = 0; i < egzamin.getBazaEgzaminacyjna().getListaWszystkichPytan().size(); i++) {
+            Pytanie p = egzamin.getBazaEgzaminacyjna().getListaWszystkichPytan().get(i);
             VBox blok = new VBox(5);
             blok.setAlignment(javafx.geometry.Pos.CENTER);
 
@@ -65,8 +65,8 @@ public class EgzaminController {
     private void pokazWynik() {
         int punkty = 0;
 
-        for (int i = 0; i < egzamin.getListaPytanEgzaminacyjnych().size(); i++) {
-            Pytanie p = egzamin.getListaPytanEgzaminacyjnych().get(i);
+        for (int i = 0; i < egzamin.getBazaEgzaminacyjna().getListaWszystkichPytan().size(); i++) {
+            Pytanie p = egzamin.getBazaEgzaminacyjna().getListaWszystkichPytan().get(i);
             HBox linia = konteneryOdpowiedzi.get(i);
 
             List<String> wybrane = new ArrayList<>();
@@ -88,7 +88,7 @@ public class EgzaminController {
         }
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setContentText("Wynik: " + punkty + "/" + egzamin.getListaPytanEgzaminacyjnych().size());
+        alert.setContentText("Wynik: " + punkty + "/" + egzamin.getBazaEgzaminacyjna().getListaWszystkichPytan().size());
         alert.show();
     }
 }

@@ -5,19 +5,22 @@ import java.util.Collections;
 import java.util.List;
 
 public class Egzamin {
-    private List<Pytanie> listaPytanEgzaminacyjnych = new ArrayList<>();
+    private BazaPytan bazaEgzaminacyjna;
 
-    public void wylosujPytania(List<Pytanie> baza) {
-        List<Pytanie> kopia = new ArrayList<>(baza);
-        Collections.shuffle(kopia);
+    public Egzamin() {
+        this.bazaEgzaminacyjna = new BazaPytan();
+    }
 
-        listaPytanEgzaminacyjnych.clear();
+    public void wylosujPytania(List<Pytanie> listaPytanBazy) {
+        List<Pytanie> kopia = new ArrayList<>(listaPytanBazy);
+        Collections.shuffle(kopia);;
+
         for (int i = 0; i < 10; i++) {
-            listaPytanEgzaminacyjnych.add(kopia.get(i));
+            this.bazaEgzaminacyjna.dodajPytanie(kopia.get(i));
         }
     }
 
-    public List<Pytanie> getListaPytanEgzaminacyjnych() {
-        return listaPytanEgzaminacyjnych;
+    public BazaPytan getBazaEgzaminacyjna() {
+        return bazaEgzaminacyjna;
     }
 }
