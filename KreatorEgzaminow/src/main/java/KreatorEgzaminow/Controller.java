@@ -147,6 +147,11 @@ public class Controller {
         String odp2 = poleOdp2.getText();
         String odp3 = poleOdp3.getText();
         String odp4 = poleOdp4.getText();
+
+        if (!czyPoprawneDane(tresc, odp1, odp2, odp3, odp4)) {
+            return;
+        }
+
         if (czyJednokrotne) {
             String poprawna = "";
             if (wybor1.isSelected()) poprawna = odp1;
@@ -164,6 +169,22 @@ public class Controller {
         }
         odswiezListe();
         wyczyscPolaFormularza();
+    }
+
+    private boolean czyPoprawneDane(String tresc, String o1, String o2, String o3, String o4) {
+        if (tresc.isEmpty() || o1.isEmpty() || o2.isEmpty() || o3.isEmpty() || o4.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setContentText("Wszystkie pola tekstowe musza być wypełnione!");
+            alert.showAndWait();
+            return false;
+        }
+        if (!wybor1.isSelected() && !wybor2.isSelected() && !wybor3.isSelected() && !wybor4.isSelected()) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setContentText("Musisz wskazać przynajmniej jedna poprawną odpowiedź!");
+            alert.showAndWait();
+            return false;
+        }
+        return true;
     }
 
     private void odswiezListe() {
