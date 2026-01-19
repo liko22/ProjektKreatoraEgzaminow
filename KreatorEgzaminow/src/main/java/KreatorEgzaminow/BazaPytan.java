@@ -8,7 +8,7 @@ import java.util.List;
 
 public class BazaPytan {
     private List<Pytanie> listaWszystkichPytan;
-    private final String SCIEZKA_PLIKU = "C:/ProjektKreatoraEgzaminow/KreatorEgzaminow/src/main/resources/pytania.txt";
+    private final String SCIEZKA_PLIKU = "KreatorEgzaminow/src/main/resources/pytania.txt";
 
     public BazaPytan() {
         this.listaWszystkichPytan = new ArrayList<>();

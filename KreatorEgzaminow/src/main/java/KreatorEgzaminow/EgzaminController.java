@@ -70,24 +70,37 @@ public class EgzaminController {
             HBox linia = konteneryOdpowiedzi.get(i);
 
             List<String> wybrane = new ArrayList<>();
+            List<String> poprawne = new ArrayList<>();
+
+            if (p instanceof PytanieJednaOdp) {
+                poprawne.add(((PytanieJednaOdp) p).getPoprawnaodpowiedz());
+            } else if (p instanceof PytanieWieleOdp) {
+                poprawne.addAll(((PytanieWieleOdp) p).getPoprawneodpowiedzi());
+            }
+
             for (javafx.scene.Node node : linia.getChildren()) {
                 CheckBox cb = (CheckBox) node;
                 if (cb.isSelected()) wybrane.add(cb.getText());
             }
 
-            if (p instanceof PytanieJednaOdp) {
-                if (wybrane.size() == 1 && wybrane.get(0).equals(((PytanieJednaOdp) p).getPoprawnaodpowiedz())) {
-                    punkty++;
-                }
-            } else if (p instanceof PytanieWieleOdp) {
-                List<String> poprawne = ((PytanieWieleOdp) p).getPoprawneodpowiedzi();
-                if (wybrane.size() == poprawne.size() && wybrane.containsAll(poprawne)) {
-                    punkty++;
+            if (wybrane.size() == poprawne.size() && wybrane.containsAll(poprawne)) {
+                punkty++;
+            }
+
+            for (javafx.scene.Node node : linia.getChildren()) {
+                CheckBox cb = (CheckBox) node;
+                String tekstOpcji = cb.getText();
+
+                if (poprawne.contains(tekstOpcji)) {
+                    cb.setStyle("-fx-background-color: #90EE90; -fx-background-radius: 5; -fx-padding: 0;");
+                } else if (cb.isSelected()) {
+                    cb.setStyle("-fx-background-color: #FFB6C1; -fx-background-radius: 5; -fx-padding: 0;");
                 }
             }
         }
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText("Koniec egzaminu");
         alert.setContentText("Wynik: " + punkty + "/" + egzamin.getBazaEgzaminacyjna().getListaWszystkichPytan().size());
         alert.show();
     }

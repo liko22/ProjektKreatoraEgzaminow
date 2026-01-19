@@ -18,3 +18,5 @@ JEDNO;Który kontynent jest najmniejszy?;Afryka;Europa;Australia;Ameryka Połudn
 JEDNO;Z ilu bitów składa się jeden bajt?;4;8;16;32;8
 JEDNO;Kto wynalazł żarówkę?;Nikola Tesla;Thomas Edison;Alexander Bell;Isaac Newton;Thomas Edison
 WIELE;Które z tych owoców są cytrusami?;Jabłko;Cytryna;Pomarańcza;Truskawka;Cytryna,Pomarańcza
+JEDNO;Najlepszy klub piłkarski na świecie?;Real Madryt;Barcelona;Bayern;Arsenal;Real Madryt
+WIELE;Uczelnie to:;AGH;SP 18;UJ;SP 30;AGH,UJ
