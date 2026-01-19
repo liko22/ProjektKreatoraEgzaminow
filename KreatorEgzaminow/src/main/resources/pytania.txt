@@ -1,0 +1,20 @@
+JEDNO;Która planeta jest największa w Układzie Słonecznym?;Mars;Jowisz;Saturn;Neptun;Jowisz
+JEDNO;Kto napisał Pana Tadeusza?;Henryk Sienkiewicz;Juliusz Słowacki;Adam Mickiewicz;Cyprian Kamil Norwid;Adam Mickiewicz
+JEDNO;Jaki jest symbol chemiczny złota?;Ag;Fe;Au;Cu;Au
+JEDNO;W którym roku wybuchła II Wojna Światowa?;1914;1918;1939;1945;1939
+JEDNO;Ile boków ma sześcian?;4;6;8;12;6
+WIELE;Które z wymienionych to języki programowania?;Java;HTML;Python;JSON;Java,Python
+WIELE;Państwa graniczące z Polską to:;Niemcy;Francja;Czechy;Włochy;Niemcy,Czechy
+WIELE;Liczby pierwsze to:;2;4;7;9;2,7
+WIELE;Które miasta były stolicami Polski?;Kraków;Gdańsk;Gniezno;Poznań;Kraków,Gniezno
+JEDNO;Jakie jest największe państwo świata pod względem powierzchni?;Kanada;Chiny;Rosja;USA;Rosja
+JEDNO;Który pierwiastek jest niezbędny do oddychania?;Azot;Tlen;Wodór;Hel;Tlen
+JEDNO;Ile wynosi pierwiastek z 144?;10;11;12;13;12
+JEDNO;W jakim kraju znajduje się Wieża Eiffla?;Niemcy;Włochy;Hiszpania;Francja;Francja
+WIELE;Które z wymienionych są ssakami?;Wieloryb;Rekin;Słoń;Orzeł;Wieloryb,Słoń
+WIELE;Kolory flagi Polski to:;Biały;Niebieski;Czerwony;Zielony;Biały,Czerwony
+WIELE;Planety skaliste to:;Merkury;Jowisz;Ziemia;Neptun;Merkury,Ziemia
+JEDNO;Który kontynent jest najmniejszy?;Afryka;Europa;Australia;Ameryka Południowa;Australia
+JEDNO;Z ilu bitów składa się jeden bajt?;4;8;16;32;8
+JEDNO;Kto wynalazł żarówkę?;Nikola Tesla;Thomas Edison;Alexander Bell;Isaac Newton;Thomas Edison
+WIELE;Które z tych owoców są cytrusami?;Jabłko;Cytryna;Pomarańcza;Truskawka;Cytryna,Pomarańcza

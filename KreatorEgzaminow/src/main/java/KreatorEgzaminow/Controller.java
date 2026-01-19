@@ -54,23 +54,10 @@ public class Controller {
             }
         });
         ustawStylePrzyciskow();
-        //Pytania domyslne
-        bazaPytan.dodajPytanie(new PytanieJednaOdp("Stolica Polski to:", "Kraków", "Warszawa", "Gdańsk", "Poznań", "Warszawa"));
-        bazaPytan.dodajPytanie(new PytanieJednaOdp("Ile to 5 * 5?", "10", "20", "25", "30", "25"));
-        bazaPytan.dodajPytanie(new PytanieJednaOdp("Który kolor jest ciepły?", "Niebieski", "Zielony", "Czerwony", "Szary", "Czerwony"));
-        bazaPytan.dodajPytanie(new PytanieJednaOdp("Największy ocean to:", "Indyjski", "Spokojny", "Atlantycki", "Arktyczny", "Spokojny"));
-        bazaPytan.dodajPytanie(new PytanieJednaOdp("Rok ma ile miesięcy?", "10", "12", "14", "24", "12"));
-        bazaPytan.dodajPytanie(new PytanieWieleOdp("Liczby parzyste to:", "2", "3", "4", "5", List.of("2", "4")));
-        bazaPytan.dodajPytanie(new PytanieWieleOdp("Owoce to:", "Jabłko", "Pomidor", "Gruszka", "Cebula", List.of("Jabłko", "Gruszka")));
-        bazaPytan.dodajPytanie(new PytanieWieleOdp("Państwa w Europie to:", "Polska", "Egipt", "Niemcy", "Japonia", List.of("Polska", "Niemcy")));
-        bazaPytan.dodajPytanie(new PytanieWieleOdp("Zwierzęta domowe to:", "Pies", "Lew", "Kot", "Rekin", List.of("Pies", "Kot")));
-        bazaPytan.dodajPytanie(new PytanieWieleOdp("Programy Office to:", "Word", "Chrome", "Excel", "Spotify", List.of("Word", "Excel")));
-        bazaPytan.dodajPytanie(new PytanieJednaOdp("Która planeta jest najbliżej Słońca?", "Wenus", "Mars", "Merkury", "Ziemia", "Merkury"));
-        bazaPytan.dodajPytanie(new PytanieWieleOdp("Systemy operacyjne to:", "Windows", "Linux", "Java", "Photoshop", List.of("Windows", "Linux")));
+        bazaPytan.wczytajZPliku();
         odswiezListe();
     }
 
-    //Pomoc chata bo to dziwne xd
     private HBox stworzWierszPytania(Pytanie pytanie) {
         HBox kontenerGlowny = new HBox(10);
         VBox kontenerTekstu = new VBox(5);
@@ -89,13 +76,13 @@ public class Controller {
         przyciskUsun.setStyle("-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-size: 10px;");
         przyciskUsun.setOnAction(klikniecie -> {
             bazaPytan.usunPytanie(pytanie);
+            bazaPytan.zapiszDoPliku();
             odswiezListe();
         });
 
         kontenerGlowny.getChildren().addAll(kontenerTekstu, przyciskUsun);
         return kontenerGlowny;
     }
-    //koniec
 
     @FXML
     private void ustawTrybJedno() {
@@ -167,6 +154,7 @@ public class Controller {
             if (wybor4.isSelected()) poprawne.add(odp4);
             bazaPytan.dodajPytanie(new PytanieWieleOdp(tresc, odp1, odp2, odp3, odp4, poprawne));
         }
+        bazaPytan.zapiszDoPliku();
         odswiezListe();
         wyczyscPolaFormularza();
     }
@@ -200,11 +188,11 @@ public class Controller {
         wyczyscZaznaczenia();
     }
 
-
-    //Tworzenie egzaminu
     @FXML
     private void generujEgzamin() {
-        if (bazaPytan.getListaWszystkichPytan().size()<10) { return;}
+        if (bazaPytan.getListaWszystkichPytan().size() < 10) {
+            return;
+        }
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/egzamin-view.fxml"));
