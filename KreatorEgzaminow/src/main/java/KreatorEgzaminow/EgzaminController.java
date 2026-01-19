@@ -102,6 +102,8 @@ public class EgzaminController {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setHeaderText("Koniec egzaminu");
         alert.setContentText("Wynik: " + punkty + "/" + egzamin.getBazaEgzaminacyjna().getListaWszystkichPytan().size());
-        alert.show();
+        alert.showAndWait();
+        javafx.stage.Stage oknoEgzaminu = (javafx.stage.Stage) kontenerPytan.getScene().getWindow();
+        oknoEgzaminu.close();
     }
 }

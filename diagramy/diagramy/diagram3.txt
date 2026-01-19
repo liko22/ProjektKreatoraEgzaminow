@@ -1,0 +1,45 @@
+@startuml
+object "glownaBaza : BazaPytan" as B1 {
+    listaWszystkichPytan = [P1, P2, ..., P12]
+}
+
+object "pytanie1 : PytanieJednaOdp" as P1 {
+    tresc = "Stolica Polski to:"
+    opcjaa = "Kraków"
+    opcjab = "Warszawa"
+    opcjac = "Gdańsk"
+    opcjad = "Poznań"
+    poprawnaodpowiedz = "Warszawa"
+}
+
+object "pytanie2 : PytanieWieleOdp" as P2 {
+    tresc = "Liczby parzyste to:"
+    opcjaa = "2"
+    opcjab = "3"
+    opcjac = "4"
+    opcjad = "5"
+    poprawneodpowiedzi = ["2", "4"]
+}
+
+object "mojEgzamin : Egzamin" as E1 {
+}
+
+object "bazaEgzaminacyjna : BazaPytan" as B2 {
+    listaWszystkichPytan = [P1, P2, ..., P10]
+}
+
+object "wynikAlert : Alert" as A1 {
+    headerText = "Wynik egzaminu"
+    contentText = "Wynik: 10/10"
+}
+
+' Relacje
+B1 -- P1 : zawiera
+B1-- P2 : zawiera
+E1 *-- B2 : posiada
+B2 o-- P1 : wylosowano
+B2 o-- P2 : wylosowano
+E1 ..> A1 : wyswietla po sprawdzeniu
+
+
+@enduml

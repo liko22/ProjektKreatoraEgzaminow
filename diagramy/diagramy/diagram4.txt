@@ -1,0 +1,49 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+
+actor "Użytkownik" as user
+
+rectangle "System Kreator Egzaminów" {
+    package "Zarządzanie Bazą Pytan" {
+        usecase "Dodaj pytanie jednokrotnego wyboru" as UC1
+        usecase "Dodaj pytanie wielokrotnego wyboru" as UC2
+        usecase "Usuń pytanie z listy" as UC3
+        usecase "Przeglądaj listę pytań" as UC4
+        usecase "Automatyczny zapis bazy do pliku" as UC5
+    }
+
+    package "Moduł Egzaminu" {
+        usecase "Generuj egzamin (losowanie 10 pytań)" as UC6
+        usecase "Rozwiąż egzamin" as UC7
+        usecase "Sprawdź wynik (ocena)" as UC8
+    }
+
+    ' Relacje w zarządzaniu
+    user -- UC1
+    user -- UC2
+    user -- UC3
+    user -- UC4
+
+    ' Automatyczny zapis po akcjach - strzałki bez napisów
+    UC1 ..> UC5
+    UC2 ..> UC5
+    UC3 ..> UC5
+
+    ' Liniowa kolejność egzaminu - strzałki bez napisów
+    user -- UC6
+    UC6 ..> UC7
+    UC7 ..> UC8
+}
+
+note right of UC5
+  Zapis do pliku pytania.txt
+  w folderze resources
+end note
+
+note bottom of UC6
+  Inicjuje proces i 
+  otwiera nowe okno
+end note
+
+@enduml

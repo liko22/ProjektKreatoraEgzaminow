@@ -1,0 +1,67 @@
+@startuml
+
+package KreatorEgzaminow {
+    class Pytanie {
+        
+String tresc
+String opcjaa
+String opcjab
+String opcjac
+String opcjad
++ String getTresc()+ String getOpcjaa()+ String getOpcjab()+ String getOpcjac()+ String getOpcjad()
+}
+
+    class PytanieJednaOdp {
+        
+String poprawnaodpowiedz+ String getPoprawnaodpowiedz()}
+
+    class PytanieWieleOdp {
+        
+List<String> poprawneodpowiedzi+ List<String> getPoprawneodpowiedzi()}
+
+    class BazaPytan {
+        
+List<Pytanie> listaWszystkichPytan+ void dodajPytanie(Pytanie pytanie)+ void usunPytanie(Pytanie pytanie)+ List<Pytanie> getListaWszystkichPytan()}
+
+    class Egzamin {
+        
+BazaPytan bazaEgzaminacyjna+ void wylosujPytania(List<Pytanie> listaPytanBazy)+ BazaPytan getBazaEgzaminacyjna()}
+}
+
+package KreatorEgzaminowGUI {
+    class Controller {
+        
+BazaPytan bazaPytan
+ListView<Pytanie> widokListyPytan
+TextField poleTrescPytania
+CheckBox wybor1
+boolean czyJednokrotne
++ void initialize()+ void dodajPytanieDoBazy()+ void generujEgzamin()
+void odswiezListe()
+}
+
+    class EgzaminController {
+        
+Egzamin egzamin
+VBox kontenerPytan
+List<HBox> konteneryOdpowiedzi+ void rozpocznijTest(List<Pytanie> wszystkie)+ void pokazWynik()
+void wyswietlPytania()
+}
+}
+
+' Relacje modelu
+PytanieJednaOdp --|> Pytanie
+PytanieWieleOdp --|> Pytanie
+BazaPytan o-- Pytanie
+Egzamin --> BazaPytan
+
+' Relacje GUI do modelu
+KreatorEgzaminowGUI.Controller --> KreatorEgzaminow.BazaPytan
+KreatorEgzaminowGUI.EgzaminController --> KreatorEgzaminow.Egzamin
+
+' Relacje między kontrolerami
+KreatorEgzaminowGUI.Controller ..> KreatorEgzaminowGUI.EgzaminController
+
+hide methods
+hide members
+@enduml
